@@ -1,26 +1,33 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import styled from 'styled-components';
+import Profile from './components/Profile';
+import GlobalStyles from './ui/GlobalStyles';
+import Logo from './ui/Logo';
+import Wrapper from './ui/Wrapper';
 
-function App() {
+const AppWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+  }
+`;
+
+window.onerror = e => console.log(e);
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppWrapper>
+      <Wrapper>
+        <GlobalStyles />
+        <Logo />
+        <Profile />
+      </Wrapper>
+    </AppWrapper>
   );
-}
+};
 
 export default App;
