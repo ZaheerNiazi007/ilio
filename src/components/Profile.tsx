@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import profileImage from "../assets/images/poodle4.jpg"
 import LocationIconSvg from "../assets/images/icons/location.svg"
-import Carousel from './carousel/Carousel';
+
 import { EmblaOptionsType } from 'embla-carousel';
 import EmblaCarousel from './carousel/Carousel';
 const ProfileWrapper = styled.div`
@@ -65,10 +65,6 @@ const Description = styled.p`
 
 `;
 
-const CardList = styled.div`
-  display: flex;
-  justify-content: center;
-`;
 
 const JoinedTime = styled.span`
 padding: 8px;
