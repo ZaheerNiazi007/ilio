@@ -4,7 +4,7 @@ import useEmblaCarousel, {
   EmblaOptionsType,
 } from 'embla-carousel-react'
 import imageByIndex from './imageByIndex'
-import "../../App.css"
+import "../../assets/css/embla.css"
 import styled from 'styled-components';
 
 
@@ -12,14 +12,16 @@ type DotButtonPropType = {
   selected: boolean;
   onClick: () => void;
 };
-const ButtonSpace = styled.div`
-  width: 10px;
-`;
+
 
 const EmblaButtons = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
+
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
 `;
 
 const ImageText = styled.div`
@@ -43,7 +45,7 @@ const Locationcomponent = styled.div`
 const Pricecomponent = styled.div`
   font-family: 'Inter';
   font-style: normal;
-
+font-weight:700;
   font-size: 16px;
   line-height: 19px;
   text-transform: capitalize;
@@ -107,11 +109,11 @@ const HeartIcon = styled.svg`
   position: absolute;
   width: 24px;
   height: 24px;
-
-  right: 30px; /* Adjust the left value as per your spacing requirements */
+  right: 50px; /* Adjust the left value as per your spacing requirements */
   top: 18px; /* Adjust the top value as per your positioning requirements */
   filter: brightness(0) invert(1);
   z-index: 2;
+  
 `;
 
 
@@ -223,31 +225,40 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
     emblaApi.on('reInit', onSelect)
     emblaApi.on('select', onSelect)
   }, [emblaApi, onInit, onSelect])
-
+  const locations = ['Toronto, ON', 'Toronto, ON', 'Toronto, ON','Toronto, ON','Toronto, ON'];
+  const names = ['Poodle', 'australian shepherd', 'Poodle','Poodle','Poodle'];
+  const prices = ['$2600', '$2600', '$2600','$2600','$2600'];
+  const sliderButtonData = ['AD', 'M', 'AD','AD','AD'];
+  const genderButtonData = ['F', '', 'F', 'F', 'F'];
+  const sevenWButtonData = ['7W', '3Y', '7W','7W','7W'];
   return (
     <>
       <EmblaButtons>
         <PrevButton onClick={scrollPrev} enabled={prevBtnEnabled} />
-        <ButtonSpace />
+     
         <NextButton onClick={scrollNext} enabled={nextBtnEnabled} />
       </EmblaButtons>
       <div className="embla">
         <div className="embla__viewport" ref={emblaRef}>
           <div className="embla__container">
             {slides.map((index) => (
-              <><div className="embla__slide" key={index}>
+              <><div className="embla__slide" key={index} >
                
                 <img
                   className="embla__slide__img"
                   src={imageByIndex(index)}
                   alt="Your alt text" />
-                <ButtonContainer>  <SliderButton>
-                  AD
-                </SliderButton>
-                  <GenderButton>
-                    F
-                  </GenderButton>
-                  <SevenWButton>7W</SevenWButton>
+                <ButtonContainer>
+
+                {sliderButtonData[index] && (
+                    <SliderButton>{sliderButtonData[index]}</SliderButton>
+                  )}
+                  {genderButtonData[index] && (
+                    <GenderButton>{genderButtonData[index]}</GenderButton>
+                  )}
+                  {sevenWButtonData[index] && (
+                    <SevenWButton>{sevenWButtonData[index]}</SevenWButton>
+                  )}
                   <HeartIcon viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
                     <g id="4 - Filled / heart">
                       <path id="heart-Filled" d="M21.3694 10.562C20.4144 15.458 15.3954 18.8969 13.2824 20.1489C12.8864 20.3819 12.4434 20.5 12.0004 20.5C11.5574 20.5 11.1144 20.3829 10.7184 20.1489C8.60441 18.8969 3.58543 15.459 2.63043 10.562C2.23143 8.51501 2.77443 6.34488 4.08343 4.75488C5.28143 3.30088 6.94643 2.5 8.77243 2.5C9.92143 2.5 11.0304 2.79099 12.0004 3.34399C12.9704 2.79099 14.0794 2.5 15.2284 2.5C17.0544 2.5 18.7194 3.30088 19.9174 4.75488C21.2254 6.34488 21.7684 8.51501 21.3694 10.562Z" fill="black" />
@@ -259,11 +270,12 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
                 </ButtonContainer>
 
                 <ImageText>
-                 <Locationcomponent>Toronto,On</Locationcomponent> 
+                 <Locationcomponent>{locations[index]}</Locationcomponent> 
         
-                 <Namecomponent>poodle</Namecomponent>
-
-                 <Pricecomponent>$ 2600</Pricecomponent> 
+               
+                 <Namecomponent>{names[index]}</Namecomponent>
+                 <Pricecomponent>{prices[index]}</Pricecomponent>
+               
 
    
 

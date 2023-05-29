@@ -5,6 +5,6 @@ import styled from "styled-components";
 
 const $primaryBackgroundColor = " #F5F5F5";
 export default styled.section`
-  padding: 2em;
+  padding: 0.8em;
   // background: ${$primaryBackgroundColor};
 `;
