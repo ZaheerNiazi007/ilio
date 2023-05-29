@@ -40,7 +40,7 @@
   .embla__slide__img {
     display: block;
     height: var(--slide-height);
-    width: 95%;
+    width: 93%;
     border-radius: 12px;
     object-fit: cover;
   }
